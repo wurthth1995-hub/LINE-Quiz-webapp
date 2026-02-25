@@ -1,0 +1,120 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  Users, 
+  Globe, 
+  Headset, 
+  Calculator, 
+  TrendingUp, 
+  ShieldCheck, 
+  Laptop, 
+  Package, 
+  Wrench, 
+  BarChart, 
+  Box, 
+  ChevronRight 
+} from 'lucide-react';
+
+const departments = [
+  { id: 1, name: 'HR', icon: Users, url: 'https://docs.google.com/forms/d/e/1FAIpQLSeQok0cCic7IFglKOEPxc80oTKUnvA6PGB39QpGcZLo67p8RA/viewform' },
+  { id: 2, name: 'E-Biz', icon: Globe, url: '#' },
+  { id: 3, name: 'Telesales', icon: Headset, url: '#' },
+  { id: 4, name: 'Accounting', icon: Calculator, url: '#' },
+  { id: 5, name: 'Sales', icon: TrendingUp, url: '#' },
+  { id: 6, name: 'Credit Control', icon: ShieldCheck, url: '#' },
+  { id: 7, name: 'IT', icon: Laptop, url: '#' },
+  { id: 8, name: 'Warehouse & QM', icon: Package, url: '#' }, // แก้คำผิดจาก Wearhouse เป็น Warehouse ให้ดูเป็นมืออาชีพขึ้น
+  { id: 9, name: 'Master Service', icon: Wrench, url: '#' },
+  { id: 10, name: 'Sales Ops', icon: BarChart, url: '#' },
+  { id: 11, name: 'Product', icon: Box, url: '#' },
+];
+
+export default function App() {
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    // Trigger animation after mount
+    setIsLoaded(true);
+  }, []);
+
+  const handleLinkClick = (e, deptName) => {
+    e.preventDefault();
+    // จำลองการคลิกลิงก์ ในการใช้งานจริงสามารถลบฟังก์ชั่นนี้และใส่ URL จริงใน data ด้านบนได้เลย
+    alert(`กำลังพาคุณไปยังหน้าของแผนก: ${deptName}`);
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50 font-sans selection:bg-red-200">
+      {/* CSS สำหรับ Animation */}
+      <style dangerouslySetInnerHTML={{__html: `
+        @keyframes slideUpFade {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-slide-up {
+          animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+          opacity: 0;
+        }
+      `}} />
+
+      {/* Header - White Theme with Würth Logo */}
+      <header className="bg-white sticky top-0 z-10 shadow-sm border-b border-gray-200">
+        <div className="max-w-3xl mx-auto px-6 py-4 md:py-5 flex items-center justify-between">
+          <div className="flex flex-col">
+            <img 
+              src="https://www.wuerth.co.th/media/system/layout_wl2bootstrap/bootstrap_system_images/wuerth_logo_big.png" 
+              alt="Würth Logo" 
+              className="h-8 md:h-10 object-contain object-left"
+            />
+            <p className="text-gray-500 text-sm mt-1.5 font-medium">Department Portal</p>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Content Area */}
+      <main className="max-w-3xl mx-auto px-4 py-8 pb-20">
+        
+        <div className="mb-6 px-2">
+          <h2 className="text-lg font-semibold text-gray-800">เลือกระบบแผนกที่ต้องการเข้าถึง</h2>
+          <p className="text-sm text-gray-500 mt-1">กรุณากดที่รายการด้านล่างเพื่อไปยังเว็บไซต์ของแผนก</p>
+        </div>
+
+        {/* Grid / List Layout */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4">
+          {departments.map((dept, index) => {
+            const Icon = dept.icon;
+            return (
+              <a
+                key={dept.id}
+                href={dept.url}
+                onClick={(e) => handleLinkClick(e, dept.name)}
+                className={`
+                  group flex items-center justify-between p-4 bg-white rounded-xl shadow-sm border border-gray-100
+                  transition-all duration-200 ease-in-out
+                  hover:shadow-md hover:border-red-200 hover:bg-red-50/30
+                  active:scale-[0.98] active:bg-gray-100
+                  animate-slide-up
+                `}
+                style={{ 
+                  animationDelay: isLoaded ? `${index * 0.06}s` : '0s' 
+                }}
+              >
+                <div className="flex items-center gap-4">
+                  <div className="flex items-center justify-center w-12 h-12 rounded-full bg-gray-50 text-gray-600 group-hover:bg-[#CC0000] group-hover:text-white transition-colors duration-300">
+                    <Icon size={22} strokeWidth={1.5} />
+                  </div>
+                  <span className="font-medium text-gray-800 group-hover:text-[#CC0000] transition-colors duration-300">
+                    {dept.name}
+                  </span>
+                </div>
+                
+                <div className="text-gray-300 group-hover:text-[#CC0000] group-hover:translate-x-1 transition-all duration-300">
+                  <ChevronRight size={20} />
+                </div>
+              </a>
+            );
+          })}
+        </div>
+      </main>
+    </div>
+  );
+}
