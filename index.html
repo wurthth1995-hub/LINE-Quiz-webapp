@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WÜRTH - Department Portal</title>
+    <title>WÜRTH - Boarding Portal</title>
     
     <!-- Tailwind CSS (ผ่าน CDN สำหรับใช้งานหน้าเว็บโดยตรง) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -70,7 +70,7 @@
                     alt="Würth Logo" 
                     class="h-8 md:h-10 object-contain object-left"
                 />
-                <p class="text-gray-500 text-sm mt-1.5 font-medium">Department Portal</p>
+                <p class="text-gray-500 text-sm mt-1.5 font-medium">Boarding Portal</p>
             </div>
         </div>
     </header>
@@ -79,7 +79,7 @@
     <main class="max-w-3xl mx-auto px-4 py-8 pb-20">
         <div class="mb-6 px-2">
             <h2 class="text-lg font-semibold text-gray-800">เลือกระบบแผนกที่ต้องการเข้าถึง</h2>
-            <p class="text-sm text-gray-500 mt-1">กรุณากดที่รายการด้านล่างเพื่อไปยังเว็บไซต์ของแผนก</p>
+            <p class="text-sm text-gray-500 mt-1">กรุณากดที่รายการด้านล่างเพื่อทำแบบประเมินของแผนกต่างๆ</p>
         </div>
 
         <!-- Grid สำหรับใส่รายการแผนก (JavaScript จะนำข้อมูลมาใส่ที่นี่) -->
@@ -92,17 +92,17 @@
     <script>
         // ข้อมูลแผนกต่างๆ (คุณสามารถแก้ไข URL ได้ที่นี่)
         const departments = [
-            { id: 1, name: 'HR', icon: 'ph-users', url: 'https://docs.google.com/forms/d/e/1FAIpQLSeQok0cCic7IFglKOEPxc80oTKUnvA6PGB39QpGcZLo67p8RA/viewform' },
-            { id: 2, name: 'E-Biz', icon: 'ph-globe', url: '#' },
-            { id: 3, name: 'Telesales', icon: 'ph-headset', url: '#' },
-            { id: 4, name: 'Accounting', icon: 'ph-calculator', url: '#' },
+            { id: 1, name: 'Human Resource', icon: 'ph-users', url: 'https://docs.google.com/forms/d/e/1FAIpQLSeQok0cCic7IFglKOEPxc80oTKUnvA6PGB39QpGcZLo67p8RA/viewform' },
+            { id: 2, name: 'E-Business', icon: 'ph-globe', url: 'https://docs.google.com/forms/d/e/1FAIpQLScAS04x791LoYUmUEoqhbqkumfzUx8FZ1IVkc2-wGbh_E6h6A/viewform' },
+            { id: 3, name: 'Telesales', icon: 'ph-headset', url: 'https://docs.google.com/forms/d/e/1FAIpQLSd93MD8byl8tj4z1KVW53jGIrCgeHIc06AWL3PUQtJ52Pdsfw/viewform' },
+            { id: 4, name: 'Accounting', icon: 'ph-calculator', url: 'https://docs.google.com/forms/d/e/1FAIpQLSdUtjn9wIswOmIREUyZDGVIO4v1WX_yq9TjZbmT-waTvOel1w/viewform' },
             { id: 5, name: 'Sales', icon: 'ph-trend-up', url: '#' },
-            { id: 6, name: 'Credit Control', icon: 'ph-shield-check', url: '#' },
-            { id: 7, name: 'IT', icon: 'ph-laptop', url: '#' },
-            { id: 8, name: 'Warehouse & QM', icon: 'ph-package', url: '#' },
-            { id: 9, name: 'Master Service', icon: 'ph-wrench', url: '#' },
-            { id: 10, name: 'Sales Ops', icon: 'ph-chart-bar', url: '#' },
-            { id: 11, name: 'Product', icon: 'ph-package', url: '#' },
+            { id: 6, name: 'Credit Control', icon: 'ph-shield-check', url: 'https://docs.google.com/forms/d/e/1FAIpQLSdfWGcGClieJ4ZtN9lxh-GZbsiyrBCmPUl60BGS08XZAB93fQ/viewform' },
+            { id: 7, name: 'IT', icon: 'ph-laptop', url: 'https://docs.google.com/forms/d/e/1FAIpQLSdzZK5IoI4mpRVhOdW6XzCGBjsJQC1yq3cgBF0DOtu-6B13FA/viewform' },
+            { id: 8, name: 'Warehouse & QM', icon: 'ph-package', url: 'https://docs.google.com/forms/d/e/1FAIpQLSdT5LJTGLQyEQtVDsYgkz8rnv6TMLFsD9-etp8iKN1fJ2blsQ/viewform' },
+            { id: 9, name: 'Master Service', icon: 'ph-wrench', url: 'https://docs.google.com/forms/d/e/1FAIpQLSdUz-bXIJyordGMmbimvnindWRwRimHUP2C5LyuO9Nx7NV2Kg/viewform' },
+            { id: 10, name: 'Sales Operations', icon: 'ph-chart-bar', url: 'https://docs.google.com/forms/d/e/1FAIpQLSd4h5b3jSpj6vniLDuM3tA8mJ1Tlh1iE0BL5GzbJPr2AMbOYQ/viewform' },
+            { id: 11, name: 'Product', icon: 'ph-package', url: 'https://docs.google.com/forms/d/e/1FAIpQLSeMNouw4Ia57wkcadQsN8bNan9MuSDJHcX1iW8BrojGdNvl9A/viewform' },
         ];
 
         // ฟังก์ชั่นสำหรับจำลองการคลิกลิงก์
